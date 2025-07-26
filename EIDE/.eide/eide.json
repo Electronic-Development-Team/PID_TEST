@@ -2,58 +2,29 @@
   "name": "PID_test",
   "type": "ARM",
   "dependenceList": [],
-  "srcDirs": [
-    "../Users"
-  ],
+  "srcDirs": [],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
     "folders": [
       {
-        "name": "Application",
+        "name": "..",
         "files": [],
         "folders": [
           {
-            "name": "MDK-ARM",
+            "name": "USERS",
             "files": [
               {
-                "path": "../MDK-ARM/startup_stm32f103xb.s"
+                "path": "../Users/lcd_fonts.c"
+              },
+              {
+                "path": "../Users/lcd_image.c"
+              },
+              {
+                "path": "../Users/lcd_spi_200.c"
               }
             ],
             "folders": []
-          },
-          {
-            "name": "User",
-            "files": [],
-            "folders": [
-              {
-                "name": "Core",
-                "files": [
-                  {
-                    "path": "../Core/Src/main.c"
-                  },
-                  {
-                    "path": "../Core/Src/gpio.c"
-                  },
-                  {
-                    "path": "../Core/Src/adc.c"
-                  },
-                  {
-                    "path": "../Core/Src/spi.c"
-                  },
-                  {
-                    "path": "../Core/Src/usart.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_it.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
-                  }
-                ],
-                "folders": []
-              }
-            ]
           }
         ]
       },
@@ -61,6 +32,15 @@
         "name": "Drivers",
         "files": [],
         "folders": [
+          {
+            "name": "CMSIS",
+            "files": [
+              {
+                "path": "../Core/Src/system_stm32f1xx.c"
+              }
+            ],
+            "folders": []
+          },
           {
             "name": "STM32F1xx_HAL_Driver",
             "files": [
@@ -111,12 +91,51 @@
               }
             ],
             "folders": []
+          }
+        ]
+      },
+      {
+        "name": "Application",
+        "files": [],
+        "folders": [
+          {
+            "name": "User",
+            "files": [],
+            "folders": [
+              {
+                "name": "Core",
+                "files": [
+                  {
+                    "path": "../Core/Src/main.c"
+                  },
+                  {
+                    "path": "../Core/Src/gpio.c"
+                  },
+                  {
+                    "path": "../Core/Src/adc.c"
+                  },
+                  {
+                    "path": "../Core/Src/spi.c"
+                  },
+                  {
+                    "path": "../Core/Src/usart.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_it.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
+                  }
+                ],
+                "folders": []
+              }
+            ]
           },
           {
-            "name": "CMSIS",
+            "name": "MDK-ARM",
             "files": [
               {
-                "path": "../Core/Src/system_stm32f1xx.c"
+                "path": "../MDK-ARM/startup_stm32f103xb.s"
               }
             ],
             "folders": []
@@ -129,7 +148,7 @@
   "deviceName": null,
   "packDir": null,
   "miscInfo": {
-    "uid": "9a82302814134f47745a0bdc16199b6f"
+    "uid": "1218b554dc3588ea29d425de70af191b"
   },
   "targets": {
     "PID_test": {
@@ -277,8 +296,10 @@
           "../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
-          ".cmsis/include",
-          "../MDK-ARM/RTE/_PID_test"
+          "../MDK-ARM/.cmsis/include",
+          "../MDK-ARM/RTE/_PID_test",
+          "../Users",
+          ".cmsis/include"
         ],
         "libList": [],
         "defineList": [
@@ -301,14 +322,16 @@
             "c99-mode": true,
             "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
             "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
-            "warnings": "all-warnings"
+            "warnings": "all-warnings",
+            "gnu-extensions": true
           },
           "asm-compiler": {},
           "linker": {
             "output-format": "elf",
             "xo-base": "",
             "ro-base": "",
-            "rw-base": ""
+            "rw-base": "",
+            "$disableOutputTask": true
           }
         }
       }
