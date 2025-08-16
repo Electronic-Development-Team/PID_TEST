@@ -13,17 +13,7 @@
         "folders": [
           {
             "name": "USERS",
-            "files": [
-              {
-                "path": "../Users/lcd_fonts.c"
-              },
-              {
-                "path": "../Users/lcd_image.c"
-              },
-              {
-                "path": "../Users/lcd_spi_200.c"
-              }
-            ],
+            "files": [],
             "folders": []
           }
         ]
@@ -112,9 +102,6 @@
                     "path": "../Core/Src/gpio.c"
                   },
                   {
-                    "path": "../Core/Src/adc.c"
-                  },
-                  {
                     "path": "../Core/Src/spi.c"
                   },
                   {
@@ -152,117 +139,42 @@
   },
   "targets": {
     "PID_test": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/Application/User/Core/adc.c",
+        "USERS/lcd_fonts.c",
+        "USERS/lcd_image.c",
+        "USERS/lcd_spi_200.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
         "archExtensions": "",
         "floatingPointHardware": "none",
-        "scatterFilePath": "",
         "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
         "storageLayout": {
           "RAM": [
             {
-              "tag": "RAM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
-              "tag": "RAM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
-              "tag": "RAM",
-              "id": 3,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
               "tag": "IRAM",
               "id": 1,
               "mem": {
-                "startAddr": "",
-                "size": ""
+                "startAddr": "0x20000000",
+                "size": "0x5000"
               },
               "isChecked": true,
-              "noInit": false
-            },
-            {
-              "tag": "IRAM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
               "noInit": false
             }
           ],
           "ROM": [
             {
-              "tag": "ROM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
-              "tag": "ROM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
-              "tag": "ROM",
-              "id": 3,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "",
-                "size": ""
+                "startAddr": "0x08000000",
+                "size": "0x10000"
               },
               "isChecked": true,
               "isStartup": true
-            },
-            {
-              "tag": "IROM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": true,
-              "isStartup": false
             }
           ]
         },
@@ -313,7 +225,7 @@
           "beforeBuildTasks": [],
           "afterBuildTasks": [],
           "global": {
-            "use-microLIB": false,
+            "use-microLIB": true,
             "output-debug-info": "enable"
           },
           "c/cpp-compiler": {
@@ -327,11 +239,33 @@
           },
           "asm-compiler": {},
           "linker": {
+            "output-format": "elf"
+          }
+        },
+        "AC6": {
+          "version": 3,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [],
+          "global": {
+            "use-microLIB": false,
+            "output-debug-info": "enable"
+          },
+          "c/cpp-compiler": {
+            "optimization": "level-0",
+            "language-c": "c99",
+            "language-cpp": "c++11",
+            "link-time-optimization": false
+          },
+          "asm-compiler": {
+            "$use": "asm-auto",
+            "misc-controls": ""
+          },
+          "linker": {
+            "$outputTaskExcludes": [
+              ".bin"
+            ],
             "output-format": "elf",
-            "xo-base": "",
-            "ro-base": "",
-            "rw-base": "",
-            "$disableOutputTask": true
+            "misc-controls": "--diag_suppress=L6329"
           }
         }
       }
