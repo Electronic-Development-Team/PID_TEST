@@ -361,7 +361,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase/>
-            <ScatterFile>d:\Users\admin\Desktop\work\STM32 Code\PID_TEST\PID_test\EIDE\&lt;YOUR_SCATTER_FILE&gt;.sct</ScatterFile>
+            <ScatterFile>&lt;YOUR_SCATTER_FILE&gt;.sct</ScatterFile>
             <IncludeLibs/>
             <IncludeLibsPath/>
             <Misc/>
